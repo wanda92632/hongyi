@@ -1,0 +1,62 @@
+server:
+  port: 8080
+logging:
+  config: classpath:logback-spring.xml
+spring:
+  datasource:
+    name: devutility-test-database-mybatis-springboot
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/hongyi?useUnicode=true&characterEncoding=utf-8&userSSL=false&serverTimezone=GMT%2B8
+      username: root
+      password: MEIgui571254933.
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      #配置监控服务器
+      stat-view-servlet:
+        login-username: layui
+        login-password: 123456
+        reset-enable: false
+        url-pattern: /druid/*
+        # 添加IP白名单
+        #allow:
+        # 添加IP黑名单，当白名单和黑名单重复时，黑名单优先级更高
+        #deny:
+  freemarker:
+    # 设置模板后缀名
+    suffix: .html
+    # 设置文档类型
+    content-type: text/html
+    # 设置页面编码格式
+    charset: UTF-8
+    # 设置页面缓存
+    cache: false
+    # 设置ftl文件路径
+    template-loader-path: classpath:/templates
+    # 设置静态文件路径，js,css等
+    settings:
+      template_update_delay: 0
+  devtools:
+    restart:
+      enabled: true
+      additional-paths: src/main/java
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wanda.hongyi.entity
+  global-config:
+    db-config:
+      id-type: auto
+  configuration:
+    map-underscore-to-camel-case: true
