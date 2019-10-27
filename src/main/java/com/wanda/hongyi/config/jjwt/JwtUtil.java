@@ -50,9 +50,9 @@ public class JwtUtil {
         try {
             final Claims claims = Jwts.parser().setSigningKey(BASE64_ENCODED_SECRET_KEY).parseClaimsJws(token).getBody();
         } catch (ExpiredJwtException e1) {
-            throw new ServletException("token expired");
+            throw new ServletException("token 已过期");
         } catch (Exception e) {
-            throw new ServletException("other token exception");
+            throw new ServletException("token 校验失败");
         }
     }
 }

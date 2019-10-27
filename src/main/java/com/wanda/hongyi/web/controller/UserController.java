@@ -1,6 +1,7 @@
 package com.wanda.hongyi.web.controller;
 
 
+import com.wanda.hongyi.anno.TokenCheck;
 import com.wanda.hongyi.config.jjwt.JwtUtil;
 import com.wanda.hongyi.config.shiro.PasswordHelper;
 import com.wanda.hongyi.entity.User;
@@ -43,12 +44,11 @@ public class UserController {
     /**
      * 用户登录
      *
-     * @param request
      * @return
      */
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> userLogin(@RequestBody User loginInfo,HttpServletRequest request) {
+    public Map<String, Object> userLogin(@RequestBody User loginInfo) {
         Map<String, Object> modelMap = new HashMap<>();
         //获取登录信息
         String username = loginInfo.getUsername();

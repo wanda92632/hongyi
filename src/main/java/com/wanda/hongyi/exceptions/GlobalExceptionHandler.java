@@ -3,6 +3,9 @@ package com.wanda.hongyi.exceptions;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 全局异常处理
  *
@@ -13,8 +16,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * 全局异常处理
+     * @param e
+     * @return
+     */
     @ExceptionHandler(Exception.class)
-    public String handleException(Exception e) {
-        return "err:" + e.getMessage();
+    public Map<String,Object> handleException(Exception e) {
+        Map<String,Object> map = new HashMap<>();
+        map.put("success",false);
+        map.put("errMsg",e.getMessage());
+        return map;
     }
 }
