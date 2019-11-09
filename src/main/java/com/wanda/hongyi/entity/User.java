@@ -44,6 +44,8 @@ public class User implements Serializable {
 
     private Integer status;
 
+    private LocalDateTime lastVisitTime;
+
     public String getCredentialsSalt() {
         return username + salt + salt;
     }

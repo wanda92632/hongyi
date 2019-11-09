@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wanda.hongyi.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * @Author 知非
  * @Email wanda92632@163.com
@@ -19,4 +21,11 @@ public interface UserService extends IService<User> {
      */
     public User findByUsername(String username);
 
+    /**
+     * 根据用户名匹配用户
+     *
+     * @param str
+     * @return
+     */
+    List<User> findByStr(String str);
 }

@@ -8,6 +8,8 @@ import com.wanda.hongyi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author 知非
  * @Email wanda92632@163.com
@@ -30,6 +32,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("username",username);
         return userMapper.selectOne(queryWrapper);
+    }
+
+    /**
+     * 根据用户匹配用户
+     *
+     * @param str
+     * @return
+     */
+    @Override
+    public List<User> findByStr(String str) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("username",str);
+        return userMapper.selectList(queryWrapper);
     }
 
 }

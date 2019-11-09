@@ -47,6 +47,7 @@ public class MyRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //获取当前用户
         User user = (User) principalCollection.getPrimaryPrincipal();
+        log.info("当前用户名:"+user.getUsername());
         // 从数据库或者缓存中获取角色数据
         List<Role> roleList = roleService.findUserRoleByUsername(user.getId());
         for (Role role : roleList) {

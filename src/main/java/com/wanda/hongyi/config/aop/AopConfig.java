@@ -2,6 +2,7 @@ package com.wanda.hongyi.config.aop;
 
 import com.wanda.hongyi.config.jjwt.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -25,8 +26,6 @@ public class AopConfig {
     @Pointcut("@annotation(com.wanda.hongyi.anno.TokenCheck)")
     public void tokenCheck() {
     }
-
-    ;
 
     @Before("tokenCheck()")
     public void before() throws ServletException {
